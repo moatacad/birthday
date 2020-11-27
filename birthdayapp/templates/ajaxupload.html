@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row">
+{% include 'nav.html' %}
+<div class="col-md-8" style="background-color:#F1E8D8;">
+   <h3>Upload Picture </h3>
+  <form action="#" method="post" enctype="multipart/form-data" id="myform">
+    <label>Profile Picture</label><input type="file" id='photo' name="photo">
+    <button type="button" id='btn' class="btn btn-secondary btn-block">Submit</button>
+<input type='text' name='username'>
+  </form>
+   
+</div>
+</div>
+
+<script src="{{ url_for('static',filename='vendor/jquery/jquery.js')}}"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$('#photo').change(function(){    
+    formname = document.getElementById('myform')
+    senddata = new FormData(formname)
+    $.ajax({
+        url:"{{ url_for('ajaxupload') }}",
+        data:senddata,
+        type:'POST',
+        dataType:'text',
+        error: function(err){
+            console.log(err)
+        },
+        success:function(message){
+            alert(message)
+        },
+        cache:false,
+        processData:false,
+        contentType:false,
+
+
+    })
+
+})
+
+})
+</script>
+
+
+{% endblock content%}

@@ -1,0 +1,10 @@
+<person>
+	<name>
+		<firstname>Abiola</firstname>
+		<lastname>Ilupeju</lastname>
+	</name>
+	<contact>
+		<location>Opebi Lagos</location>
+		<email>a@b.com</email>
+	</contact>
+</person>

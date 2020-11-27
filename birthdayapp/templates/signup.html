@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="row">
+      <div class="col-lg-5 text-center">
+       <img src="{{ url_for('static',filename='images/celebrant.jpg') }}" class="img-fluid">
+      </div>
+      <div class="col-lg-7 text-left">
+        <h1 class="mt-5">Sign Up Form</h1>
+        
+        <form action="{{ url_for('usersignup')}}" method="POST">
+          {{ signform.username.label }}<br>
+          {{ signform.username.errors }}
+          {{ signform.username(class_='form-control') }}<br>
+          {{ signform.pwd.label }}<br>
+          {{ signform.pwd(class_='form-control') }}
+          {{ signform.pwd.errors }}
+          {{ signform.confirmpwd.label }}<br>
+          {{ signform.confirmpwd(class_='form-control') }}
+          <br>
+          {{ signform.confirmpwd.errors }}
+          {{ signform.submit(class_='btn btn-danger btn-block') }}
+          {{ signform.csrf_token  }}
+        </form>
+         <p>Already have an account? <a href="{{ url_for('home')}}">Login here</a></p>
+      </div>
+    </div>
+{% endblock content%}

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row">
+{% include 'nav.html' %}
+<div class="col-md-8" style="background-color:#F1E8D8;">
+   <h3>Donation Page </h3>
+{{ session['carts'] }}
+   
+</div>
+</div>
+
+
+
+{% endblock content%}

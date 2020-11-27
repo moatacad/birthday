@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row">
+{% include 'nav.html' %}
+<div class="col-md-8" style="background-color:#F1E8D8;">
+   <h3>Contact Us Page </h3>
+  <form action="{{ url_for('contactme') }}" method="post">
+
+ {{ form.email.label }}<br>
+ {{ form.email(class_='form-control') }}
+ {{ form.fullname.label }}<br>
+ {{ form.fullname(class_='form-control') }}
+ {{ form.msg.label }}<br>
+ {{ form.msg(class_='form-control') }}
+ {{ form.csrf }}
+ {{ form.sendbtn }}<br>
+  </form>
+   
+</div>
+</div>
+
+
+
+{% endblock content%}

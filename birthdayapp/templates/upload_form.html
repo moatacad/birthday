@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row">
+{% include 'nav.html' %}
+<div class="col-md-8" style="background-color:#F1E8D8;">
+   <h3>Upload Picture </h3>
+  <form action="{{ url_for('uploadpix') }}" method="post" enctype="multipart/form-data">
+    <label>Profile Picture</label><input type="file" name="picture">
+    <button class="btn btn-secondary btn-block">Submit</button>
+
+  </form>
+   
+</div>
+</div>
+
+
+
+{% endblock content%}

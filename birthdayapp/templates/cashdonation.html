@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row">
+{% include 'nav.html' %}
+<div class="col-md-8" style="background-color:#F1E8D8;">
+   <h3>Donate Cash Here </h3>
+ <form method="post" action="{{ url_for('donate_cash_function')}}">
+     <label>Enter Amount to Donate</label>
+     <input type="number" class="form-control" name="amt"> <br>
+     <input type='hidden' name="csrf_token" value="{{ csrf_token() }}">
+     <button class="btn btn-block btn-danger">
+         Proceed
+     </button>
+ </form>
+   
+</div>
+</div>
+
+
+
+{% endblock content%}

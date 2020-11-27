@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row">
+    {% include 'nav.html' %}
+<div class="col-md-8" style="background-color:#F1E8D8;">
+    <form action="{{ url_for('editprofile')}}" method='post'>
+        {{ data.guest_fullname.label }}<br>
+        
+        {{ data.guest_fullname(class_='form-control', value=userdeets.guest_fullname) }}<br>
+       
+        {{ data.email.label }}<br>
+        {{ data.email(class_='form-control',value=userdeets.email) }}<br>
+        {{ data.userstate.label }}<br>
+        {{ data.csrf_token }}
+       <input type='hidden' value="{{ session['username'] }}" name='id'>
+        <select name="userstate" class='form-control' >
+        {% for x in allstates: %}
+        {% if userdeets.guest_state == x.state_id %}
+        <option value="{{ x.state_id }}" selected='selected'> {{ x.state_name }}</option>
+        {% else: %}
+        <option value="{{ x.state_id }}"> {{ x.state_name }}</option>
+        {% endif %}
+        
+        {% endfor %}
+    </select>
+        {{ data.updatebtn(class_='btn btn-block btn-danger') }}
+    </form>
+</div>
+</div>
+
+
+
+{% endblock content%}

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row">
+{% include 'nav.html' %}
+<div class="col-md-8" style="background-color:#F1E8D8;">
+   <h3>Upload Picture </h3>
+
+  <form action="{{ url_for('resize') }}" method="post" enctype="multipart/form-data">
+   {{ data.photo.label }}<br>
+   {{ data.photo() }}
+   {{ data.photo.errors }}
+   {{ data.btn(class_='btn btn-dark btn-block') }}
+{{ data.csrf_token() }}
+  </form>
+   
+</div>
+</div>
+
+
+
+{% endblock content%}

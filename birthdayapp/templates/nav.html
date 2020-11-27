@@ -1,0 +1,16 @@
+<div class="col-md-4" style="background-color: #EDAE49;">
+    <h3> Navigation</h3>
+    <div class="">
+        <img src="{# url_for('static',filename='profile/'+ data.guest_pix ) #}" class='img-fluid'>
+    </div>
+    <ul class='custom-nav'>
+        <li><a href="{{ url_for('userdashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('editprofile') }}">Edit Profile</a></li>
+        <li><a href="{{ url_for('donate') }}">Donate</a></li>
+        <li><a href="{{ url_for('uploadpix')}}">Upload</a></li>
+        <li><a href="{{ url_for('donate_cash_function')}}">Cash Donation Page</a></li>
+        <li><a href="{{ url_for('resize')}}">Resize Upload</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    </ul>
+    
+    </div>

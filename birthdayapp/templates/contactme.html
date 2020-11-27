@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row">
+{% include 'nav.html' %}
+<div class="col-md-8" style="background-color:#F1E8D8;">
+   <h3>Contact Us Page </h3>
+   <p id="message"></p>
+  <form id='myform' action="{{ url_for('contactme') }}" method="post">
+
+ {{ form.email.label }}<br>
+ {{ form.email(class_='form-control') }}
+ {{ form.fullname.label }}<br>
+ {{ form.fullname(class_='form-control') }}
+ {{ form.msg.label }}<br>
+ {{ form.msg(class_='form-control') }}<br>
+ {{ form.csrf }}
+ {{ form.sendbtn(class_='btn btn-block btn-dark', type='button') }}<br>
+  </form>
+   
+</div>
+</div>
+
+<script src="{{ url_for('static',filename='vendor/jquery/jquery.js')}}">
+
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#sendbtn').click(function(){
+        email = $('#email').val()    
+        fullname=$('#fullname').val()
+        csrf= $('#csrf_token').val()
+        mydata = $('#myform').serialize()//{"email":email,"fullname":fullname, "csrf_token":csrf};
+        alert(mydata)
+        $.ajax({
+            type: "POST",
+            url: "{{ url_for('myajax') }}",
+            dataType: "text",
+            data:mydata,
+            success:function(msg){
+                alert(msg)
+                //document.location.href='/'
+            },
+            error:function(err){
+                console.log(err)
+            }
+            })
+
+     
+
+
+    })
+
+})
+</script>
+
+{% endblock content%}

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row">
+    
+    {% include 'nav.html' %}
+   
+<div class="col-md-8" style="background-color:#F1E8D8;">
+    {% with m= get_flashed_messages() %}
+    {% for msg in m: %}
+    {{ msg }}
+
+    {% endfor %}
+    {% endwith %}
+    <h3> Dashboard, Welcome {{ data.username }}</h3>
+    <h5>Message From The Celebrant</h5>
+    <p>Birthday is the anniversary of the day on which a person was born, typically treated as an occasion for celebration and the giving of gifts.</p>
+    
+</div>
+</div>
+
+
+
+{% endblock content%}

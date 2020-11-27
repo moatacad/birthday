@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row">
+{% include 'nav.html' %}
+<div class="col-md-8" style="background-color:#F1E8D8;">
+   <h3>Customer Sign up Page</h3>
+   <form id='dform'>
+       <div id="feedback"></div>
+{{ form.email.label }} <br>
+{{ form.email(class_='form-control') }}
+{{ form.guest_fullname.label }} <br>
+{{ form.guest_fullname(class_='form-control') }} 
+{{ form.userstate.label }} <br>
+{{ form.csrf_token  }}
+<select name='userstate' id='userstate' class='form-control'>
+{% for s in states: %}
+<option value="{{ s.state_id }}">{{ s.state_name }}</option>
+{% endfor %}
+</select>
+<br>
+ <select name="lga" class="form-control" id="lga">
+     <option>Please Select Local Govt</option>
+ </select>
+{{ form.updatebtn(class_='btn btn-block btn-info', type='button') }}
+<br><br>
+<img id='loading' src="{{ url_for('static',filename='images/d7zpc0h-0acca5bc-1a81-4049-bd94-f42ae45b46c4.gif')}}" style='display:none'>
+</form>
+</div>
+</div>
+
+<script src="{{ url_for('static',filename='vendor/jquery/jquery.js')}}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+       $('#userstate').change(function(){
+        data2send = "userstate="+$(this).val()//{"userstate":$(this).val()}
+        //alert(data2send)
+           $.ajax({
+                url:"{{ url_for('fetchlga')}}",
+                data:data2send,
+                type:'GET', 
+                success:function(msg){
+                setTimeout(function(){
+                   $('#lga').html(msg)
+                   $('#updatebtn').val('Update Details')
+                },3000)
+                   //alert(msg)                  
+                },
+                error:function(errormsg){
+                    console.log(errormsg.responseText)
+                },
+                beforeSend:function(){
+
+                      $('#loading').css('display','block')
+                        $('#updatebtn').val("Please wait...")
+                  
+
+                   
+                   
+                   // alert('I am about to make ajax call')
+                }
+           })
+       })
+    })
+</script>
+
+{% endblock content%}

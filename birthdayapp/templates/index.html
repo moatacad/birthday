@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="row">
+      <div class="col-lg-5 text-center">
+       <img src="{{ url_for('static',filename='images/celebrant.jpg') }}" class="img-fluid">
+      </div>
+      <div class="col-lg-7 text-left">
+        <h1 class="mt-5">Please Login below to access my Birthday information</h1>
+        <form action="{{ url_for('home')}}" method="POST">
+          {{ loginform.username.label }}<br>
+          {{ loginform.username(class_='form-control') }}<br>
+          {{ loginform.pwd.label }}<br>
+          {{ loginform.pwd(class_='form-control') }}
+          <br>{{ loginform.loginbtn(class_='btn btn-danger btn-block') }}
+          {{ loginform.csrf_token  }}
+        </form>
+         <p>Don't have account yet? Click here to <a href="{{ url_for('usersignup')}}">sign up</a></p>
+      </div>
+    </div>
+{% endblock content%}
